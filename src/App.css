@@ -1,0 +1,88 @@
+.App {
+  text-align: center;
+}
+
+/* ========= HEADER ========= */
+
+.App-header {
+  background-color: #222;
+  height: 40px;
+  padding: 1px 0 20px 0;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.menu-button{
+
+}
+
+.menu-bar {
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 6px 0;
+}
+
+/* ========= PLACESLIST ========= */
+
+.items-container {
+  display: block;
+    position: absolute;
+    background-color: #222;
+    height: calc(100vh - 61px);
+    width: 270px;
+    margin-bottom: 0;
+    -webkit-transition: all .2s ease;
+    -o-transition: all .2s ease;
+    transition: all .2s ease;
+    z-index: 100;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+input[type=text] {
+    width: 150px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 3px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('./searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 5px 20px 5px 10px;
+    -webkit-transition: width 0.8s;
+    transition: width 0.8s;
+}
+
+input[type=text]:focus {
+    width: 100%;
+}
+
+.items-container ul {
+  color: #fff;
+  list-style: none;
+  padding: 15px 0 15px 0;
+}
+
+.place-item {
+  padding: 15px 0 15px 0;
+}
+
+.place-item:hover {
+  background-color: #555;
+}
+
+/* ========= MAP ========= */
+
+.map-container {
+  height: calc(100vh - 61px);
+  width: 100%;
+}
+
+.map {
+  height: 100%;
+}
