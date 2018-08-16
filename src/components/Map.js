@@ -2,23 +2,23 @@ import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, InfoBox, Marker } from 'react-google-maps';
 
 class Map extends Component {
-  state = {
-    isOpen: false
-  }
-  onToggleOpen = (isOpen) => {
-    this.setState({ isOpen: !isOpen })
-  }
+
   render() {
    const GoogleMapExample = withGoogleMap(props => (
+
       <GoogleMap
-        defaultCenter = { { lat: 40.756795, lng: -73.954298 } }
-        defaultZoom = { 13 } >
+        defaultCenter = { { lat: 40.7191251, lng: -73.9984472 } }
+        defaultZoom = { 15 } >
+          <Marker
+              position={{lat:40.7191251, lng:-73.9984472}}
+            />
       </GoogleMap>
+
    ));
    return(
         <GoogleMapExample
-          containerElement={ <div class="map-container" /> }
-          mapElement={ <div class="map" role="application" /> }
+          containerElement={ <div className="map-container" /> }
+          mapElement={ <div className="map" role="application" /> }
         />
    );
    }
