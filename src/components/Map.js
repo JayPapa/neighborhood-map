@@ -1,26 +1,42 @@
 import React, { Component } from 'react';
-import { withScriptjs, withGoogleMap, GoogleMap, InfoBox, Marker } from 'react-google-maps';
+const { compose, withProps, withStateHandlers } = require("recompose");
 
-class Map extends Component {
+const {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+  InfoWindow,
+} = require("react-google-maps");
 
-  render() {
-   const GoogleMapExample = withGoogleMap(props => (
 
+const ThisMap = compose(
+  withStateHandlers(() => ({
+    isOpen: false,
+  }), {
+    onToggleOpen: ({ isOpen }) => () => ({
+      isOpen: !isOpen,
+    })
+  }),
+  withGoogleMap
+)(props =>(
       <GoogleMap
-        defaultCenter = { { lat: 40.7191251, lng: -73.9984472 } }
-        defaultZoom = { 15 } >
+        defaultCenter = { props.center }
+        defaultZoom = { 18 } >
+          {props.places.map(place =>
           <Marker
-              position={{lat:40.7191251, lng:-73.9984472}}
-            />
+              key={place.title}
+              title={place.title}
+              position={place.position}
+              onClick={props.onToggleOpen}
+            >
+          {props.isOpen && <InfoWindow key={place.title} onCloseClick={props.onToggleOpen}>
+            <h3>{place.title}</h3>
+          </InfoWindow>}
+          </Marker>
+          )}
       </GoogleMap>
 
-   ));
-   return(
-        <GoogleMapExample
-          containerElement={ <div className="map-container" /> }
-          mapElement={ <div className="map" role="application" /> }
-        />
-   );
-   }
-};
-export default Map;
+  ) );
+
+export default ThisMap;

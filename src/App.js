@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Map from './components/Map.js';
+import ThisMap from './components/Map.js';
 import PlacesList from './components/PlacesList.js'
+
 class App extends Component {
   state = {
     markers: [
@@ -20,7 +21,11 @@ class App extends Component {
           <h1 className="App-title">Welcome to Little Italy</h1>
         </header>
         <PlacesList places={this.state.markers}/>
-        <Map  center={this.state.center} places={this.state.markers}/>
+        <ThisMap
+          containerElement={ <div className="map-container" /> }
+          mapElement={ <div className="map" role="application" /> }
+          center={this.state.center}
+          places={this.state.markers}/>
       </div>
     );
   }
