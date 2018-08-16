@@ -13,10 +13,15 @@ class App extends Component {
       {title: 'Dahing Seafood Market', position: {lat: 40.7185183, lng: -73.9981347} },
       {title: 'Mulberry Street Cigars', position: {lat: 40.7185183, lng: -73.9981347} }],
     center: {lat: 40.7191251, lng: -73.9984472},
-    activeMarker: null
+    activeMarker: null,
+    query: ''
   }
   setActiveMarker = (activeMarker) => {
     this.setState({ activeMarker })
+  }
+
+  updateQuery = (query) => {
+    this.setState({ query: query })
   }
   render() {
     return (
@@ -24,7 +29,11 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to Little Italy</h1>
         </header>
-        <PlacesList places={this.state.markers}/>
+        <PlacesList
+          query={this.state.query}
+          places={this.state.markers}
+          updateQuery={this.updateQuery}
+          onClickMarker={this.setActiveMarker}/>
         <ThisMap
           containerElement={ <div className="map-container" /> }
           mapElement={ <div className="map" role="application" /> }
