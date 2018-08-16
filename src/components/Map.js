@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-const { compose, withProps, withStateHandlers } = require("recompose");
+import React from 'react';
+const { compose, withStateHandlers } = require("recompose");
 
 const {
   withScriptjs,
@@ -25,13 +25,13 @@ const ThisMap = compose(
         defaultZoom = { 18 } >
           {props.places.map(place =>
           <Marker
-              key={place.title}
-              title={place.title}
-              position={place.position}
-              onClick={() => {props.onClickMarker( place.title )}}
+              key={place.id}
+              title={place.name}
+              position={place.location}
+              onClick={() => {props.onClickMarker( place.id )}}
             >
-          {place.title === props.activeMarker && <InfoWindow key={place.title} onCloseClick={props.onToggleOpen}>
-            <h3>{place.title}</h3>
+          {place.id === props.activeMarker && <InfoWindow key={place.name} onCloseClick={props.onToggleOpen}>
+            <h3>{place.name}</h3>
           </InfoWindow>}
           </Marker>
           )}
