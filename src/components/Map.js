@@ -28,9 +28,9 @@ const ThisMap = compose(
               key={place.title}
               title={place.title}
               position={place.position}
-              onClick={props.onToggleOpen}
+              onClick={() => {props.onClickMarker( place.title )}}
             >
-          {props.isOpen && <InfoWindow key={place.title} onCloseClick={props.onToggleOpen}>
+          {place.title === props.activeMarker && <InfoWindow key={place.title} onCloseClick={props.onToggleOpen}>
             <h3>{place.title}</h3>
           </InfoWindow>}
           </Marker>

@@ -12,7 +12,11 @@ class App extends Component {
       {title: 'Italian American Museum', position: {lat: 40.7187622, lng: -73.9987811} },
       {title: 'Dahing Seafood Market', position: {lat: 40.7185183, lng: -73.9981347} },
       {title: 'Mulberry Street Cigars', position: {lat: 40.7185183, lng: -73.9981347} }],
-    center: {lat: 40.7191251, lng: -73.9984472}
+    center: {lat: 40.7191251, lng: -73.9984472},
+    activeMarker: null
+  }
+  setActiveMarker = (activeMarker) => {
+    this.setState({ activeMarker })
   }
   render() {
     return (
@@ -25,7 +29,9 @@ class App extends Component {
           containerElement={ <div className="map-container" /> }
           mapElement={ <div className="map" role="application" /> }
           center={this.state.center}
-          places={this.state.markers}/>
+          places={this.state.markers}
+          activeMarker={this.state.activeMarker}
+          onClickMarker={this.setActiveMarker} />
       </div>
     );
   }
