@@ -36,6 +36,7 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXZywdQxz-00QU-JT2gOzWvLzqlu5nkX8&v=3.exp&libraries=geometry,drawing,places"></script>
+    <script>function googleError() {alert("The service 'Google Maps' didn't load correctly!")}</script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=&v=3.exp&libraries=geometry,drawing,places" onerror="googleError()"></script>
   </body>
 </html>
