@@ -15,47 +15,52 @@ class App extends Component {
     query: '',
     isMenuToggle: false
   }
-
+ // ERROR HANDLING
   componentWillMount () {
+    // fetch Data from Foursquare
     fetch('https://api.foursquare.com/v2/venues/search?ll=40.7191,-73.9984&oauth_token=1W0UAFZQKQSAZI2JWVYZ0WJ2H0ZXL2PKU0SRBICKMQWT4SCZ&v=20180817')
+    // if there is an error, print on console and show an alert dialog to the user
     .catch((error) => {
       console.log('There was an error with the API request: ', error)
       alert('There was an error with the API request: check the JavaScript console to learn more ')
     })
+    // take the response, return in json format
     .then((response) => {
       console.log('API request successfully fetched')
       return response.json()
     })
+    // set the data received as the markers list
     .then((data) => {
       console.log('Data successfully received from Foursquare')
       this.setState({ markers: data.response.venues })
     })
+    // handle Google Maps errors
     if(window.google) {
       console.log('Google Map loaded successfully', window.google)
     } else {
       console.log("Google Map didn't load", window.google)
     }
   }
-
+  // sets the activeMarker clicked by the user
   setActiveMarker = (activeMarker) => {
     this.setState({ activeMarker })
   }
-
+  // boolean used to set the animation
   toggleAnimation = (isAnimated) => {
     this.setState({ isAnimated: !isAnimated })
   }
-
+  // used to set the query typed in the input field
   updateQuery = (query) => {
     this.setState({ query })
   }
-
+  // used to listen if the menu button is toggled or not
   toggleMenu = () => {
     this.setState({ isMenuToggle: !this.state.isMenuToggle })
   }
 
   render() {
     /*
-    **Creating the list to show when the user adds filters
+    **Creating the filtered list to show when the user adds filters
     */
     let showingPlaces
 

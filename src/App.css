@@ -137,3 +137,29 @@ footer span {
 footer a:link, footer a:visited {
   color: #fff
 }
+
+@media screen and (max-width: 375px) {
+  .App-title {
+    width: calc(100% - 35px);
+    margin-left: 35px;
+    font-size: 1.4em;
+  }
+  .menu-button {
+    margin-top: 9px;
+  }
+  .menu-bar1, .menu-bar2, .menu-bar3 {
+    width: 30px;
+  }
+}
+
+@media screen and (max-width: 325px) {
+  .App-header {
+    height: 30px;
+  }
+  .App-title {
+    font-size: 1.2em;
+  }
+  .menu-button {
+    margin-top: 5px;
+  }
+}
