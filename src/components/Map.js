@@ -14,25 +14,25 @@ const ThisMap = compose(
       <GoogleMap
         defaultCenter = { props.center }
         defaultZoom = { 18 } >
-        // set a marker for each place in the list using map()
+        {/* set a marker for each place in the list using map()
+         if the place clicked is the active one, set the bounce animation*/ }
           {props.places.map(place =>
           <Marker
               key={place.id}
               title={place.name}
               position={place.location}
               onClick={() => {
-                // set the active marker
                 props.onClickMarker( place.id );
                 props.toggleAnimation(false)}}
-                // if the place clicked is the active marker set the bounce animation
               animation={place.id === props.activeMarker &&
                 props.isAnimated ? "1" : "-1"}
             >
-            // if this place is the active one show InfoWindow
+
+            { /* if this place is the active one show InfoWindow */ }
           {place.id === props.activeMarker &&
             <InfoWindow key={place.name}
               onCloseClick={() => {props.toggleAnimation(true)}}>
-              // show information about the place opened
+              { /* show information about the place opened */ }
               <div role="dialog" aria-modal={props.isAnimated} tabIndex="0">
                 <h3>{place.name}</h3>
                 {place.categories.map(category =>

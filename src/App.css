@@ -2,13 +2,6 @@
   text-align: center;
 }
 
-.list-container ul li button {
-  background: none;
-  border: none;
-  color: #fff;
-  text: none;
-}
-
 /* ========= HEADER ========= */
 
 .App-header {
@@ -72,6 +65,13 @@
   transition: all .9s;
   z-index: 100;
   overflow: auto;
+}
+
+.list-container ul li button {
+  background: none;
+  border: none;
+  color: #fff;
+  text: none;
 }
 
 .close {
@@ -149,6 +149,9 @@ footer a:link, footer a:visited {
   }
   .menu-bar1, .menu-bar2, .menu-bar3 {
     width: 30px;
+  }
+  .list-container {
+    height: calc(100vh - 85px);
   }
 }
 

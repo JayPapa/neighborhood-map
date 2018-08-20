@@ -1,7 +1,6 @@
 import React from 'react';
 
 function PlacesList (props) {
-  // if the button menu is toggled then set the class to show the nav
   let toggleClass = props.isToggle ? "list-container" : "close";
     return (
       <nav aria-label="Select a place" className={toggleClass}>
@@ -11,7 +10,7 @@ function PlacesList (props) {
           tabIndex="0" onChange={(e) => {props.updateQuery(e.target.value)}}>
         </input>
         <ul role="menu">
-          // map through the list of places and set a list item for each
+        { /* map through the list of places and set a list item for each*/ }
           {props.places.map( place => (
             <li key={place.name} className="place-item" role="menuitem"
             onClick={() => {
